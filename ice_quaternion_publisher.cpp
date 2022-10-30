@@ -16,20 +16,18 @@ void getQuaternionObject(QuaternionObject* const object, const float& val) noexc
 *object = QuaternionObject(val, val, val, val);
 }
 
-int main()
-{
+int main() {
     // initialize runtime for communication with RouDi
     iox::runtime::PoshRuntime::initRuntime(APP_NAME);
 
     // create a publisher object
-    iox::popo::Publisher<QuaternionObject> publisher({"Quaternion", "QuaternionMessage", "Object"});
+    iox::popo::Publisher <QuaternionObject> publisher({"Quaternion", "QuaternionMessage", "Object"});
 
     float counter = 0.0;
-    while (!iox::posix::hasTerminationRequested())
-    {
+    while (!iox::posix::hasTerminationRequested()) {
         ++counter;
-        // generate random number
-        float random = static_cast <float> (rand()) / static_cast <float> (RAND_MAX/100);
+        // generate random float between 0 and 100
+        float random = static_cast <float> (rand()) / static_cast <float> (RAND_MAX / 100);
 
 
         float sampleValue1 = random;
@@ -40,23 +38,24 @@ int main()
         // Reserve a memory chunk which fits our struct.
         // Retrieve a typed sample from shared memory.
         publisher.loan()
-                .and_then([&](auto& sample) {
+                .and_then([&](auto &sample) {
                     sample->w = sampleValue1;
                     sample->x = sampleValue2;
                     sample->y = sampleValue3;
                     sample->z = sampleValue4;
                     sample.publish();
                 })
-                .or_else([](auto& error) {
-                    // Do something with error
+                .or_else([](auto &error) {
+                    // print error message
                     std::cerr << "Unable to loan sample, error: " << error << std::endl;
                 });
 
         // print to console
-        std::cout << "Counter: " << counter << std::endl << "Publisher sent values: " << sampleValue1 << ", " << sampleValue2 << ", " << sampleValue3
+        std::cout << "Counter: " << counter << std::endl << "Publisher sent values: " << sampleValue1 << ", "
+                  << sampleValue2 << ", " << sampleValue3
                   << ", " << sampleValue4 << std::endl;
 
-        std::this_thread::sleep_for(std::chrono::seconds(5));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 
     return 0;

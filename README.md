@@ -2,24 +2,33 @@
 This example showcases two processes that communicate with each other using zero-copy inter-process communication (IPC) on iceoryx.
 
 ## Expected Output
-![expected_output](assets/ice-quaternion.png "Expected Output")
+![expected_output](assets/terminal.png "Expected Output")
 
 ## Build and Run
 
 1. First, iceoryx needs to be installed. You can find the build and installation guidelines [here](assets/installation.md).
-2. Build (with CMake)
-    1. Generate the necessary build files
+2. Clone the repository or unzip the file
+    - Clone
+    ```bash
+    git clone https://github.com/jonaletil/ice-quaternion.git
+    ```
+    - Unzip
+    ```bash
+    unzip ice-quaternion.zip
+    ```
+3. Build (with CMake)  
+    2.1. Generate the necessary build files
    ```bash
    cd ice-quaternion
    cmake CMakelist.txt
     ```
-    2. Compile the source code
+    2.2. Compile the source code
    ```bash
    cmake --build .
     ```
-3. How to run  
-There are two ways how to start processes:
-   - **Run sh script (fast way):**
+4. How to run  
+There are two ways you can start/run the processes:
+   - **Run sh script (faster way):**
       ```bash
      cd ice-quaternion
      ./run_ice_quaternion.sh 

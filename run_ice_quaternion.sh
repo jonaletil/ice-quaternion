@@ -17,9 +17,9 @@ fi
 command -v tmux >/dev/null 2>&1 || { echo >&2 "tmux is not installed but required. Trying to install it..."; sudo apt-get install tmux; }
 
 $tmux new-session -d -s $SESSION
-$tmux new-window -a -t $SESSION iox-roudi
+$tmux new-window -a -t  $SESSION iox-roudi
 
-$tmux split-window -t 0 -v $WORKSPACE/ice-quaternion-publisher
+$tmux split-window -t 0 -v -p 85 $WORKSPACE/ice-quaternion-publisher
 $tmux split-window -t 1 -h $WORKSPACE/ice-quaternion-subscriber
 
 $tmux attach -t $SESSION

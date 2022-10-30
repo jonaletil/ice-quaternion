@@ -19,8 +19,7 @@ int main() {
 
     int counter = 0;
     // run until interrupted by Ctrl-C
-    while (!iox::posix::hasTerminationRequested())
-    {
+    while (!iox::posix::hasTerminationRequested()) {
         ++counter;
         subscriber
                 .take()
@@ -31,15 +30,14 @@ int main() {
                               << ", " << sample->z << std::endl;
                 })
                 .or_else([](auto &result) {
-                    // only has to be called if the alternative is of interest,
-                    // i.e. if nothing has to happen when no data is received and
-                    // a possible error alternative is not checked or_else is not needed
+                    // print error message
                     if (result != iox::popo::ChunkReceiveResult::NO_CHUNK_AVAILABLE) {
                         std::cout << "Error receiving chunk." << std::endl;
                     }
                 });
 
-        std::this_thread::sleep_for(std::chrono::seconds(5));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
     }
 
     return (EXIT_SUCCESS);
