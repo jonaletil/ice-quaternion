@@ -8,21 +8,21 @@ This example showcases two processes that communicate with each other using zero
 
 1. First, iceoryx needs to be installed. You can find the build and installation guidelines [here](assets/installation.md).
 2. Clone the repository or unzip the file
-    - Clone
-    ```bash
-    git clone https://github.com/jonaletil/ice-quaternion.git
-    ```
-    - Unzip
-    ```bash
-    unzip ice-quaternion.zip
-    ```
+- Clone
+  ```bash
+  git clone https://github.com/jonaletil/ice-quaternion.git
+  ```
+- Unzip
+  ```bash
+  unzip ice-quaternion.zip
+  ```
 3. Build (with CMake)  
-    2.1. Generate the necessary build files
+    - Generate the necessary build files
    ```bash
    cd ice-quaternion
    cmake CMakelist.txt
     ```
-    2.2. Compile the source code
+    - Compile the source code
    ```bash
    cmake --build .
     ```
