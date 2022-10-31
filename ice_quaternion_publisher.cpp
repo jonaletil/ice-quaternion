@@ -31,9 +31,9 @@ int main() {
 
 
         float sampleValue1 = random;
-        float sampleValue2 = random / 6;
-        float sampleValue3 = random / 7;
-        float sampleValue4 = random / 8;
+        float sampleValue2 = random / 2;
+        float sampleValue3 = random / 3;
+        float sampleValue4 = random / 4;
 
         // Reserve a memory chunk which fits our struct.
         // Retrieve a typed sample from shared memory.
